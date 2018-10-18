@@ -1,12 +1,32 @@
-<!-- <h1>My Heroes</h1>
-<div *ngIf="selectedHero">
-  {{selectedHero.name}}
-</div> -->
+<h1>My Heroes</h1>
 <ul class="heroes">
-  <li *ngFor="let group of groups" (click)="onSelect(group)">
+    <li *ngFor="let hero of heroes" 
+      [class.selected]="hero === selectedHero"
+      (click)="onSelect(hero)">
+        <button style="width:100px; height:auto; margin-top:5px">{{hero.name}}</button>
+    </li>
+  <!-- <li *ngFor="let group of groups" (click)="onSelect(group)">
     <div>
       <span>Name: </span>{{group.name}}
+      <input placeholder="{{group.live}}">
+      <span>Lastest:</span>{{group.latest}}
     </div>
   </li>
+  <h2>{{hero.name | uppercase}} Details</h2>
+  <div><span>ID: </span>{{hero.id}}</div>
+  <div><span>Name: </span><input placeholder="name" [(ngModel)]="hero.name"></div> -->
 </ul>
+
+<div *ngIf="selectedHero">
+  <h5>{{selectedHero.name | uppercase}} Details</h5>
+  <div>
+    <span>id:</span>{{selectedHero.id}}
+  </div>
+  <div>
+    <label>Name:
+      <input placeholder="name" [(ngModel)]="selectedHero.name">
+    </label>
+  </div>
+</div>
+
 <button type="button" (click)="addUser()">Submit</button>

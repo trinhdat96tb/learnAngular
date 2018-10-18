@@ -26,13 +26,6 @@ export class UsersComponent implements OnInit {
     })
   }
 
-  // creatUser(user) {
-    
-  //   this.userService.createUser(user).subscribe(result => {
-
-  //   })
-  // }
-
   editUser(user, i) {
     this.user = _.clone(user);
     this.user.index = i;
@@ -41,7 +34,7 @@ export class UsersComponent implements OnInit {
   deleteUser(i) {
     let id = this.users[i].id;
     this.userService.deleteUser(id).subscribe(result => {
-
+      
     })
   }
 
@@ -55,6 +48,7 @@ export class UsersComponent implements OnInit {
       this.userService.createUser(this.createdUser).subscribe(result => {
         if(result) {
           this.users.push(result);
+          alert('insert success')
         }
       })
     }
