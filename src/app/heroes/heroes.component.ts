@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hero } from './hero';
-import { HEROES } from './mock-heroes';
+// import { HEROES } from './mock-heroes';
 import { DemoService } from '../services/demo.service';
 
 @Component({
@@ -13,31 +13,28 @@ export class HeroesComponent implements OnInit {
   //   id: 1,
   //   name: 'Trinh'
   // }
-
-
-
-
-  heroes = HEROES;
+  
+  // heroes = HEROES;
   selectedHero: Hero;
   
-  // groups: any[] = [];
+  groups: any[] = [];
   constructor(private demoService: DemoService) { }
     
 
   ngOnInit() {
-    // this.getData();
+    this.getData();
   }
 
   onSelect(hero: Hero): void {
     this.selectedHero = hero;
   }
 
-  // getData() {
-  //   this.demoService.getData({ key: '87a73fb5-4645-4989-b483-3afecda315f1',lookup: 'builtwith.com' }).subscribe(result => {
-  //     this.groups = result.groups;
-  //     console.log(this.groups);
-  //   });
-  // }
+  getData() {
+    this.demoService.getData({ key: '87a73fb5-4645-4989-b483-3afecda315f1',lookup: 'builtwith.com' }).subscribe(result => {
+      this.groups = result.groups;
+      console.log(this.groups);
+    });
+  }
 
   // addUser() {
   //   alert('add user');
